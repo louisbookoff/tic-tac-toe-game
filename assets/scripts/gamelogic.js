@@ -2,7 +2,6 @@
 // game is played in a 3x3 grid
 // JS board will consist of a coordinate for each one of the 9 spaces on the board
 // there are eight different ways to win the tic tac toe game
-//
 
 // Step 1: Create Two Players
 const playerOne = 'X'
@@ -28,6 +27,7 @@ const playerTurn = function () {
   } else {
     currentPlayer = playerOne
   }
+  // TODO: comment out of delete console.log
   console.log(currentPlayer) // when function is invoked, it swithches the players turn --> starts with playerOne = 'X'
 }
 // allows move to be made and check's to see if space is already filled by a turn.  If so returns move has been made
@@ -36,7 +36,7 @@ const addTurnToBoard = function (i, currentPlayer) {
     return 'Sorry, this move has been made!'
   }
   createBoard[i] = currentPlayer
-  playerTurn()
+  playerTurn() // allow turns to switch between 'X' and 'O'
   console.log(createBoard) // X or O and the proper index place
 }
 
@@ -57,15 +57,15 @@ const checkIfWinner = function (createBoard) {
     (createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[6] !== undefined) ||
     (createBoard[2] === createBoard[4] && createBoard[4] === createBoard[6] && createBoard[2] !== undefined)) {
     console.log('This winnner is', currentPlayer)
-    // eslse if saying if each index in board is equal to null, the game must continue to be played. Otherwise the else will run to display tie game.
+    // eslse if saying if the indices in createBoard are equal to null, the game must continue to be played. Otherwise the else will run to display tie game.
   } else if (createBoard[0] == null ||
-            createBoard[1] == null ||
-            createBoard[2] == null ||
-            createBoard[3] == null ||
-            createBoard[4] == null ||
-            createBoard[5] == null ||
-            createBoard[6] == null ||
-            createBoard[7] == null ||
+                createBoard[1] == null ||
+                createBoard[2] == null ||
+                createBoard[3] == null ||
+                createBoard[4] == null ||
+                createBoard[5] == null ||
+                createBoard[6] == null ||
+                createBoard[7] == null ||
             createBoard[8] == null) {
     console.log('Please proceed to next move')
   } else {
