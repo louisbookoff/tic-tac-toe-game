@@ -15,14 +15,28 @@ const playerTwo = 'O'
 // TODO: Should I keep the board empty or leave it with strings.
 
 const createBoard = []
-
+// no storage of array and gameBoard to store current state
 // const createBoard = ['', '', '', '', '', '', '', '']
 
-// playerTurn function passes two arguments, the index # and the the playerturn
-const addTurnToBoard = function (i, player) {
+// Current player
+let currentPlayer = playerOne
+
+// PlayerTurn function allows game to switch between playerOne ('X') and playerTwo ('O')
+const playerTurn = function () {
+  if (currentPlayer === playerOne) {
+    currentPlayer = playerTwo
+  } else {
+    currentPlayer = playerOne
+  }
+  console.log(currentPlayer) // when function is invoked, it swithches the players turn --> starts with playerOne = 'X'
+}
+// allows move to be made and check's to see if space is already filled by a turn.  If so returns move has been made
+const addTurnToBoard = function (i, currentPlayer) {
   if (createBoard[i] === 'X' || createBoard[i] === 'O') {
     return 'Sorry, this move has been made!'
-  } createBoard[i] = player
+  }
+  createBoard[i] = currentPlayer
+  playerTurn()
   console.log(createBoard) // X or O and the proper index place
 }
 
@@ -32,35 +46,21 @@ const addTurnToBoard = function (i, player) {
 // so if gameBoard.length === 0
 // then you choose X to go, probably by accessing players[0]
 
-// TODO: PLace this in the correct area
-
-// Current player
-let currentPlayer = playerOne
-
-// PlayerTurn function allows game to swithc between playerOne ('X') and playerTwo ('O')
-const playerTurn = function () {
-  if (currentPlayer === playerOne) {
-    currentPlayer = playerTwo
-  } else {
-    currentPlayer = playerOne
-  }
-}
-
 // This function serves to checking different winning patterns and alert user whether it is a win, tie, or continue game
-const checkIfWinner = function (move) {
-  if ((move[0] === move[1] === move[2]) ||
-    (move[0] === move[4] === move[8]) ||
-    (move[0] === move[3] === move[6]) ||
-    (move[1] === move[4] === move[7]) ||
-    (move[2] === move[5] === move[8]) ||
-    (move[3] === move[4] === move[5]) ||
-    (move[6] === move[7] === move[8]) ||
-    (move[2] === move[4] === move[6])) {
-    return 'game over'
-  } else if (checkIfWinner.length >= 9) {
-    console.log('tie')
+const checkIfWinner = function (createBoard) {
+  if ((createBoard[0] === createBoard[1] === createBoard[2] && !null) ||
+    (createBoard[0] === createBoard[4] === createBoard[8] && !null) ||
+    (createBoard[0] === createBoard[3] === createBoard[6] && !null) ||
+    (createBoard[1] === createBoard[4] === createBoard[7] && !null) ||
+    (createBoard[2] === createBoard[5] === createBoard[8] && !null) ||
+    (createBoard[3] === createBoard[4] === createBoard[5] && !null) ||
+    (createBoard[6] === createBoard[7] === createBoard[8] && !null) ||
+    (createBoard[2] === createBoard[4] === createBoard[6] && !null)) {
+    return ('This game has a winner')
+  } else if (createBoard.length <= 9 && createBoard.length !== null) {
+    console.log('Congrats ya\'ll, tie game woo!')
   } else {
-    console.log('next move')
+    console.log('Please proceed to next move')
   }
 }
 
