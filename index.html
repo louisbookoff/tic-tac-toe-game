@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,14 +12,38 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
+      <h1>Tic-Tac-Toe</h1>
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal">
+  Sign Up!
+  <!-- data target must be the same as id below -->
+</button>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+<!-- Modal -->
+<div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+<form>
+  <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+        <input name="signUp[email]" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  </div>
+  <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+        <input name="signUp[password]" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+<div class="form-group">
+<label for="exampleInputPasswordConfirmation">Password Confirmation</label>
+<input name="signUp[passwordConfirmation]" type="password" class="form-control" id="exampleInputPasswordConfirmation" placeholder="Password Confirmation">
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+    </div>
+  </div>
     </body>
-</html>
