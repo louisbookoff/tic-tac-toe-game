@@ -30,21 +30,6 @@ const playerTurn = function () {
   // TODO: comment out of delete console.log
   console.log(currentPlayer) // when function is invoked, it swithches the players turn --> starts with playerOne = 'X'
 }
-// allows move to be made and check's to see if space is already filled by a turn.  If so returns move has been made
-const addTurnToBoard = function (i, currentPlayer) {
-  if (createBoard[i] === 'X' || createBoard[i] === 'O') {
-    return 'Sorry, this move has been made!'
-  }
-  createBoard[i] = currentPlayer
-  playerTurn() // allow turns to switch between 'X' and 'O'
-  console.log(createBoard) // X or O and the proper index place
-}
-
-// potentially player can be an array of players
-// since x and o always switch, we know if the length of the board is 0 then it's x's turn (because x goes first)
-// if the length is an odd number, it's o's turn
-// so if gameBoard.length === 0
-// then you choose X to go, probably by accessing players[0]
 
 // This function serves to checking different winning patterns and alert user whether it is a win, tie, or continue game
 const checkIfWinner = function (createBoard) {
@@ -56,7 +41,7 @@ const checkIfWinner = function (createBoard) {
     (createBoard[3] === createBoard[4] && createBoard[4] === createBoard[5] && createBoard[3] !== undefined) ||
     (createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[6] !== undefined) ||
     (createBoard[2] === createBoard[4] && createBoard[4] === createBoard[6] && createBoard[2] !== undefined)) {
-    console.log('This winnner is', currentPlayer)
+    console.log('Woo there is a winner but we arent sure who')
     // eslse if saying if the indices in createBoard are equal to null, the game must continue to be played. Otherwise the else will run to display tie game.
   } else if (createBoard[0] == null ||
                 createBoard[1] == null ||
@@ -72,6 +57,23 @@ const checkIfWinner = function (createBoard) {
     console.log('tie game woo!')
   }
 }
+
+// allows move to be made and check's to see if space is already filled by a turn.  If so returns move has been made
+const addTurnToBoard = function (i, currentPlayer) {
+  if (createBoard[i] === 'X' || createBoard[i] === 'O') {
+    return 'Sorry, this move has been made!'
+  }
+  createBoard[i] = currentPlayer
+  playerTurn() // allow turns to switch between 'X' and 'O'
+  checkIfWinner(createBoard)
+  console.log(createBoard) // X or O and the proper index place
+}
+
+// potentially player can be an array of players
+// since x and o always switch, we know if the length of the board is 0 then it's x's turn (because x goes first)
+// if the length is an odd number, it's o's turn
+// so if gameBoard.length === 0
+// then you choose X to go, probably by accessing players[0]
 
 module.exports = {
   addTurnToBoard,
