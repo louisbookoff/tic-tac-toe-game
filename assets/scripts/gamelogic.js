@@ -48,15 +48,16 @@ const addTurnToBoard = function (i, currentPlayer) {
 
 // This function serves to checking different winning patterns and alert user whether it is a win, tie, or continue game
 const checkIfWinner = function (createBoard) {
-  if ((createBoard[0] === createBoard[1] && createBoard[1] === createBoard[2] && createBoard[0] !== undefined) ||
-    (createBoard[0] === createBoard[4] && createBoard[4] === createBoard[8] && createBoard[0] !== undefined) ||
+  if ((createBoard[0] === createBoard[4] && createBoard[4] === createBoard[8] && createBoard[0] !== undefined) ||
     (createBoard[0] === createBoard[3] && createBoard[3] === createBoard[6] && createBoard[0] !== undefined) ||
+    (createBoard[0] === createBoard[1] && createBoard[1] === createBoard[2] && createBoard[0] !== undefined) ||
     (createBoard[1] === createBoard[4] && createBoard[4] === createBoard[7] && createBoard[1] !== undefined) ||
     (createBoard[2] === createBoard[5] && createBoard[5] === createBoard[8] && createBoard[2] !== undefined) ||
     (createBoard[3] === createBoard[4] && createBoard[4] === createBoard[5] && createBoard[3] !== undefined) ||
     (createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[6] !== undefined) ||
     (createBoard[2] === createBoard[4] && createBoard[4] === createBoard[6] && createBoard[2] !== undefined)) {
     console.log('This winnner is', currentPlayer)
+    // eslse if saying if each index in board is equal to null, the game must continue to be played. Otherwise the else will run to display tie game.
   } else if (createBoard[0] == null ||
             createBoard[1] == null ||
             createBoard[2] == null ||
