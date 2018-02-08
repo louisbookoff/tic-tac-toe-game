@@ -73,21 +73,7 @@ const checkIfWinner = function (createBoard) {
   }
 }
 
-createBoard.every(checkIfWinner([]))
-
-// IGNORE
-// const playerOTurn = function (i) {
-//   createBoard[i] = PlayerTwo
-//   console.log(createBoard)
-// }
-
-// const createBoardTwo = [1, 2, 3, 4, 5, 6, 7, 8]
-// here is the game board according to array also matches index positions for simplicity
-// 0 1 2
-// 3 4 5
-// // 6 7 8
-// console.log(createBoard)
-
 module.exports = {
-  playerTurn
+  addTurnToBoard,
+  checkIfWinner
 }
