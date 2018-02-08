@@ -48,21 +48,31 @@ const addTurnToBoard = function (i, currentPlayer) {
 
 // This function serves to checking different winning patterns and alert user whether it is a win, tie, or continue game
 const checkIfWinner = function (createBoard) {
-  if ((createBoard[0] === createBoard[1] === createBoard[2] && !null) ||
-    (createBoard[0] === createBoard[4] === createBoard[8] && !null) ||
-    (createBoard[0] === createBoard[3] === createBoard[6] && !null) ||
-    (createBoard[1] === createBoard[4] === createBoard[7] && !null) ||
-    (createBoard[2] === createBoard[5] === createBoard[8] && !null) ||
-    (createBoard[3] === createBoard[4] === createBoard[5] && !null) ||
-    (createBoard[6] === createBoard[7] === createBoard[8] && !null) ||
-    (createBoard[2] === createBoard[4] === createBoard[6] && !null)) {
-    return ('This game has a winner')
-  } else if (createBoard.length <= 9 && createBoard.length !== null) {
-    console.log('Congrats ya\'ll, tie game woo!')
-  } else {
+  if ((createBoard[0] === createBoard[1] && createBoard[1] === createBoard[2] && createBoard[0] !== undefined) ||
+    (createBoard[0] === createBoard[4] && createBoard[4] === createBoard[8] && createBoard[0] !== undefined) ||
+    (createBoard[0] === createBoard[3] && createBoard[3] === createBoard[6] && createBoard[0] !== undefined) ||
+    (createBoard[1] === createBoard[4] && createBoard[4] === createBoard[7] && createBoard[1] !== undefined) ||
+    (createBoard[2] === createBoard[5] && createBoard[5] === createBoard[8] && createBoard[2] !== undefined) ||
+    (createBoard[3] === createBoard[4] && createBoard[4] === createBoard[5] && createBoard[3] !== undefined) ||
+    (createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[6] !== undefined) ||
+    (createBoard[2] === createBoard[4] && createBoard[4] === createBoard[6] && createBoard[2] !== undefined)) {
+    console.log('This winnner is', currentPlayer)
+  } else if (createBoard[0] == null ||
+            createBoard[1] == null ||
+            createBoard[2] == null ||
+            createBoard[3] == null ||
+            createBoard[4] == null ||
+            createBoard[5] == null ||
+            createBoard[6] == null ||
+            createBoard[7] == null ||
+            createBoard[8] == null) {
     console.log('Please proceed to next move')
+  } else {
+    console.log('tie game woo!')
   }
 }
+
+createBoard.every(checkIfWinner([]))
 
 // IGNORE
 // const playerOTurn = function (i) {
