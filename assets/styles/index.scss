@@ -1,2 +1,50 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'color';
+
+h1 {
+  color: $uclablue;
+  font-family: monospace;
+  text-align: center;
+}
+
+body {
+  background-color: $ghostwhite;
+  margin: auto;
+  text-align: center;
+}
+
+button {
+  margin: auto;
+}
+
+td {
+  align-content: center;
+  border: 6px ridge $sunsetorange;
+  height: 200px;
+  text-align: center;
+  width: 200px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+  }
+
+td:first-of-type {
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+td:nth-of-type(2) {
+  border-top-color: transparent;
+}
+
+td:nth-of-type(3) {
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+
+tr:nth-of-type(3) td {
+  border-bottom-color: transparent;
+}
