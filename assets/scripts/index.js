@@ -18,7 +18,6 @@ $(() => {
   authEvents.addHandlers()
 })
 
-
 // Step 1: Create Two Players
 const playerOne = 'X'
 const playerTwo = 'O'
