@@ -29,7 +29,7 @@ const onSignIn = function (event) {
 
   const data = getFormFields(this)
   console.log('data is ', data)
-
+  console.log(data)
   api.signIn(data)
     .then(function (data) {
       $('#message').text('You have succesfully signed up')
@@ -62,10 +62,30 @@ const onChangePassword = function (event) {
     })
 }
 
+const onSignOut = function (event) {
+  event.preventDefault()
+
+  const data = getFormFields(this)
+  console.log('data is ', data)
+
+  api.signOut(data)
+    .then(function (data) {
+      $('#message').text('You have succesfully signed out!')
+      $('#message').css('background-color', 'green')
+      console.log(data)
+    })
+    .catch(function (error) {
+      $('#message').text('You could not sign out!')
+      $('#message').css('background-color', 'red')
+      console.error(error)
+    })
+}
+
 const addHandlers = () => {
   $('.signup-form').on('submit', onSignUp)
   $('.signin-form').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
+  $('#sign-out').on('submit', onSignOut)
 }
 
 module.exports = {
