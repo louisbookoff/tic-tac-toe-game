@@ -77,5 +77,6 @@ const addTurnToBoard = function (i, currentPlayer) {
 
 module.exports = {
   addTurnToBoard,
-  checkIfWinner
+  checkIfWinner,
+  createBoard
 }
