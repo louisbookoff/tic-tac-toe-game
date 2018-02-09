@@ -2,8 +2,7 @@
 
 const api = require('./api')
 const getFormFields = require('.../../../lib/get-form-fields')
-const store = require('../store')
-// const ui = require('./ui')
+const ui = require('./ui')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -12,16 +11,8 @@ const onSignUp = function (event) {
   console.log('data is ', data)
 
   api.signUp(data)
-    .then(function (data) {
-      $('#message').text('You have succesfully signed up')
-      $('#message').css('background-color', 'green')
-      console.log(data)
-    })
-    .catch(function (error) {
-      $('#message').text('Sign up had an issue')
-      $('#message').css('background-color', 'red')
-      console.error(error)
-    })
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
 }
 
 const onSignIn = function (event) {
@@ -31,54 +22,30 @@ const onSignIn = function (event) {
   console.log('data is ', data)
   console.log(data)
   api.signIn(data)
-    .then(function (data) {
-      $('#message').text('You have succesfully signed up')
-      $('#message').css('background-color', 'green')
-      store.user = data.user
-    })
-    .catch(function (error) {
-      $('#message').text('Sign in had an issue')
-      $('#message').css('background-color', 'red')
-      console.error(error)
-    })
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
 }
 
 const onChangePassword = function (event) {
   event.preventDefault()
 
-  const data = getFormFields(this)
+  const data = getFormFields(event.target)
   console.log('data is ', data)
 
   api.changePassword(data)
-    .then(function (data) {
-      $('#message').text('You have succesfully changed your password!')
-      $('#message').css('background-color', 'green')
-      console.log(data)
-    })
-    .catch(function (error) {
-      $('#message').text('Your password could not be change, error!')
-      $('#message').css('background-color', 'red')
-      console.error(error)
-    })
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
 
-  const data = getFormFields(this)
+  const data = getFormFields(event.target)
   console.log('data is ', data)
 
   api.signOut(data)
-    .then(function (data) {
-      $('#message').text('You have succesfully signed out!')
-      $('#message').css('background-color', 'green')
-      console.log(data)
-    })
-    .catch(function (error) {
-      $('#message').text('You could not sign out!')
-      $('#message').css('background-color', 'red')
-      console.error(error)
-    })
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
 }
 
 const addHandlers = () => {
