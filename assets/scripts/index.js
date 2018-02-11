@@ -45,18 +45,20 @@ const addTurnToBoard = function (i, currentPlayer) {
 }
 
 const checkIfWinner = function (createBoard) {
-  if ((createBoard[0] === createBoard[1] && createBoard[1] === createBoard[2] && createBoard[8] !== '') ||
-    (createBoard[0] === createBoard[3] && createBoard[3] === createBoard[6] && createBoard[6] !== '') ||
+  if ((createBoard[0] === createBoard[1] && createBoard[1] === createBoard[2] && createBoard[0] !== '') ||
+    (createBoard[0] === createBoard[3] && createBoard[3] === createBoard[6] && createBoard[1] !== '') ||
     (createBoard[0] === createBoard[4] && createBoard[4] === createBoard[8] && createBoard[2] !== '') ||
     (createBoard[1] === createBoard[4] && createBoard[4] === createBoard[7] && createBoard[7] !== '') ||
     (createBoard[2] === createBoard[5] && createBoard[5] === createBoard[8] && createBoard[8] !== '') ||
     (createBoard[3] === createBoard[4] && createBoard[4] === createBoard[5] && createBoard[5] !== '') ||
-    (createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[8] !== '') ||
-    (createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6] !== '')) {
+    (createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[9] + createBoard[4] !== '') ||
+    (createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6] + createBoard[3] !== '')) {
     console.log(currentPlayer, 'has won!')
-    createBoard = new Array(9).fill('')
-    console.log(createBoard)
-    $('td').empty()
+    // createBoard = new Array(9).fill('')
+    // console.log(createBoard)
+    // // $('td').empty()
+    // $('#winner-message').text(currentPlayer, 'has won!')
+    // $('#winner-message').css('color', 'green')
     // else if saying if the indices in createBoard are equal to null, the game must continue to be played. Otherwise the else will run to display tie game.
   } else if (createBoard[0] === '' ||
                 createBoard[1] === '' ||
@@ -97,7 +99,7 @@ const clickHandlers = () => {
     $(this).off(event)
     createBoard.splice(0, 1, currentPlayer)
     console.log(createBoard)
-    checkIfWinner(createBoard)
+    // checkIfWinner(createBoard)
     playerTurn()
     tieGame()
   })
