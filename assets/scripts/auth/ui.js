@@ -21,13 +21,13 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function (error) {
-  $('#message').text('Error on sign up')
+  $('#message').text('Error on sign in, try again!')
   $('#message').css('background-color', 'red')
   console.error(error)
 }
 
 const changePasswordSuccess = function () {
-  $('#message').text('Signed up succesfully')
+  $('#message').text('You have changed your password succesfully')
   $('#message').css('background-color', 'green')
   console.log('change password successfully')
 }
@@ -39,7 +39,7 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function () {
-  $('#message').text('Signed out succesfully')
+  $('#message').text('You have signed out succesfully')
   $('#message').css('background-color', 'green')
   console.log('Signed out successfully')
 }
