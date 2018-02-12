@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# sh scripts game/create-game.sh
+# sh game/create-game.sh
 
 curl --include --request POST "http://tic-tac-toe.wdibos.com/games/" \
   --header "Content-Type: application/json" \

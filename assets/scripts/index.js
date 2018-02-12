@@ -51,8 +51,8 @@ const checkIfWinner = function (createBoard) {
     (createBoard[1] === createBoard[4] && createBoard[4] === createBoard[7] && createBoard[7] !== '') ||
     (createBoard[2] === createBoard[5] && createBoard[5] === createBoard[8] && createBoard[8] !== '') ||
     (createBoard[3] === createBoard[4] && createBoard[4] === createBoard[5] && createBoard[5] !== '') ||
-    (createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[9] + createBoard[4] !== '') ||
-    (createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6] + createBoard[3] !== '')) {
+    (createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[4] !== '') ||
+    (createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6][3] !== '')) {
     console.log(currentPlayer, 'has won!')
     // createBoard = new Array(9).fill('')
     // console.log(createBoard)
