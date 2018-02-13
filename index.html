@@ -16,20 +16,26 @@
 <body class="container-fluid">
   <h1>Tic-Tac-Toe</h1>
 
-  <nav>
-    <ul>
-      <li><a href="#">Sign Up</a></li>
-      <li><a href="#">Instructions</a></li>
-      <li><a href="#">Play</a></li>
-    </ul>
-  </nav>
+<!--Page One  -->
+<h2 class="instructions">Instructions</h2>
+  <ul class=instruction-steps>
+    <li>Step 1: Create an account.  If you have already created an account proceed to step 2.</li>
+    <li>Step 2: Please sign in with your username and password.</li>
+    <li>Step 3: Have fun, this game was made with lots of love!</li>
+  </ul>
+
+<h2 class="about-game">About</h2>
+  <p>This game was created as an assignment for WDI-23 at General Assembly.  A lot of blood sweat and tears went into making this.  So please be gentle and most importantly have fun playing Tic-Tac-Toe.</p>
+
+<br>
+<br>
+<br>
 <!-- id created for my signup responses -->
   <p id="message"></p>
 
-
+<div id="pageone">
   <!--Sign Up Button -->
-
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal">
+  <button type="button" id="pageoneButton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal">
   Sign Up!
   <!-- data target must be the same as id below -->
 </button>
@@ -40,7 +46,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
         </div>
         <div class="modal-body">
           <form class='signup-form'>
@@ -64,7 +70,7 @@
   </div>
 
   <!-- Button trigger modal SignIn -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-in-modal">
+<button type="button" id="pageoneButton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-in-modal">
 Sign In!
 <!-- data target must be the same as id below -->
 </button>
@@ -75,7 +81,7 @@ Sign In!
 <div class="modal-content">
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+  <h4 class="modal-title" id="myModalLabel">Sign In</h4>
 </div>
 <div class="modal-body">
   <form class='signin-form'>
@@ -93,7 +99,10 @@ Sign In!
 </div>
 </div>
 </div>
+</div>
 
+<!--game board page  -->
+<div id="game-page" class="hidden">
 <form id="change-password" class="border">
       <fieldset>
         <legend>Change Password!</legend>
@@ -109,28 +118,56 @@ Sign In!
         <input type="submit" value="Sign out!">
       </fieldset>
 </form>
+
+
 <br>
 <br>
 
+<div class="game-stats" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Game Stats</h5>
+    <p class="card-text">Click get stats so you can see how much of a BOSS you are!</p>
+    <a href="#" class="btn btn-primary">Get Stats</a>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<!--Creating New Game-->
+<button type="button" class="btn btn-outline-primary create-game">New Game</button>
+
+<br>
+<br>
+<br>
+
+<p id='winner-message'></p>
 <!--Creating Game Board  -->
 <table class="game-board">
   <tr>
-    <td id="top-left">0</td>
-    <td id="top-center">1</td>
-    <td id="top-right">2</td>
+    <td data-cell-index='0' class="boardspot" id="0"></td>
+    <td data-cell-index='1' class="boardspot" id="1"></td>
+    <td data-cell-index='2' class="boardspot" id="2"></td>
   </tr>
   <tr>
-    <td id="middle-left">3</td>
-    <td id="middle-center">4</td>
-    <td id="middle-right">5</td>
+    <td data-cell-index='3' class="boardspot" id="3"></td>
+    <td data-cell-index='4' class="boardspot" id="4"></td>
+    <td data-cell-index='5' class="boardspot" id="5"></td>
   </tr>
   <tr>
-    <td id="bottom-left">6</td>
-    <td id="bottom-center">7</td>
-    <td id="bottom-right">8</td>
+    <td data-cell-index='6' class="boardspot" id="6"></td>
+    <td data-cell-index='7' class="boardspot" id="7"></td>
+    <td data-cell-index='8' class="boardspot" id="8"></td>
   </tr>
 
 </table>
+<!--Creating reset button-->
+<button type="button" class="btn btn-outline-primary reset-game">Reset Board</button>
+
+</div>
+
+<!-- TODO: make functioning -->
 
 
 </body>
