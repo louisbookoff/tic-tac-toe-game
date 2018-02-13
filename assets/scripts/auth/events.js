@@ -3,6 +3,8 @@
 const api = require('./api')
 const getFormFields = require('.../../../lib/get-form-fields')
 const ui = require('./ui')
+const gameEngine = require('../gamelogic')
+const gamePlayer = require('./events')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -50,8 +52,24 @@ const onSignOut = function (event) {
 const onCreateGame = function () {
   event.preventDefault()
 
-const data = getFormFields(event.target)
-console.log()
+  api.createGames()
+    .then(ui.createGameSucess)
+    .catch(ui.createGameFailure)
+}
+
+const onUpdateGames = function () {
+  event.preventDefault()
+  const data = {
+    game: {
+      cell: {
+        'index': gameEngine.createBoard[gamePlayer],
+        'value': gameEngine.players.currentPlayer
+      }
+    },
+    'over': false
+  }
+  api.updateGames(data)
+  console.log(onUpdateGames)
 }
 
 const addHandlers = () => {
@@ -59,7 +77,8 @@ const addHandlers = () => {
   $('.signin-form').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('.create-game').on('submit', onCreateGame)
+  $('.create-game').on('click', onCreateGame)
+  $('.boardspot').on('click', onUpdateGames)
 }
 
 module.exports = {

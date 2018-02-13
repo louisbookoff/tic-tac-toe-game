@@ -2,7 +2,7 @@
 
 # sh game/create-game.sh
 
-curl --include --request POST "http://tic-tac-toe.wdibos.com/games/" \
+curl --include --request POST "https://aqueous-atoll-85096.herokuapp.com/games/" \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{

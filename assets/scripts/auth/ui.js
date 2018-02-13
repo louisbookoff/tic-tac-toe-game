@@ -50,6 +50,18 @@ const signOutFailure = function (error) {
   console.error(error)
 }
 
+const createGameSuccess = function () {
+  $('#message').text('success on create game')
+  $('#message').css('background-color', 'green')
+  console.error('create game successful')
+}
+
+const createGameFailure = function () {
+  $('#message').text('Error on create game')
+  $('#message').css('background-color', 'red')
+  console.error('create game failure')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -58,5 +70,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  createGameSuccess,
+  createGameFailure
 }
