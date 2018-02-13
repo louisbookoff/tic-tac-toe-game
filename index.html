@@ -17,22 +17,19 @@
   <h1>Tic-Tac-Toe</h1>
 
 <!--Page One  -->
-<div id=pageone>
+
 <nav class= 'home nav'>
   <ul>
-    <li class='top-nav'><a href="default.asp">Sign Up</a></li>
     <li class='top-nav'><a href="news.asp">Instructions</a></li>
-    <li class='top-nav'><a href="contact.asp">Play Game</a></li>
     <li class='top-nav'><a href="about.asp">About</a></li>
   </ul>
 </nav>
 <!-- id created for my signup responses -->
   <p id="message"></p>
 
-
+<div id="pageone">
   <!--Sign Up Button -->
-
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal">
+  <button type="button" id="pageoneButton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal">
   Sign Up!
   <!-- data target must be the same as id below -->
 </button>
@@ -43,7 +40,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
         </div>
         <div class="modal-body">
           <form class='signup-form'>
@@ -67,7 +64,7 @@
   </div>
 
   <!-- Button trigger modal SignIn -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-in-modal">
+<button type="button" id="pageoneButton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-in-modal">
 Sign In!
 <!-- data target must be the same as id below -->
 </button>
@@ -78,7 +75,7 @@ Sign In!
 <div class="modal-content">
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+  <h4 class="modal-title" id="myModalLabel">Sign In</h4>
 </div>
 <div class="modal-body">
   <form class='signin-form'>
@@ -96,9 +93,10 @@ Sign In!
 </div>
 </div>
 </div>
+</div>
 
 <!--game board page  -->
-<div id=game-page>
+<div id="game-page" class="hidden">
 <form id="change-password" class="border">
       <fieldset>
         <legend>Change Password!</legend>
@@ -114,7 +112,7 @@ Sign In!
         <input type="submit" value="Sign out!">
       </fieldset>
 </form>
-</div>
+
 
 <br>
 <br>
@@ -126,28 +124,29 @@ Sign In!
 <!--Creating Game Board  -->
 <table class="game-board">
   <tr>
-    <td class="boardspot" id="0"></td>
-    <td class="boardspot" id="1"></td>
-    <td class="boardspot" id="2"></td>
+    <td data-cell-index='0' class="boardspot" id="0"></td>
+    <td data-cell-index='1' class="boardspot" id="1"></td>
+    <td data-cell-index='2' class="boardspot" id="2"></td>
   </tr>
   <tr>
-    <td class="boardspot" id="3"></td>
-    <td class="boardspot" id="4"></td>
-    <td class="boardspot" id="5"></td>
+    <td data-cell-index='3' class="boardspot" id="3"></td>
+    <td data-cell-index='4' class="boardspot" id="4"></td>
+    <td data-cell-index='5' class="boardspot" id="5"></td>
   </tr>
   <tr>
-    <td class="boardspot" id="6"></td>
-    <td class="boardspot" id="7"></td>
-    <td class="boardspot" id="8"></td>
+    <td data-cell-index='6' class="boardspot" id="6"></td>
+    <td data-cell-index='7' class="boardspot" id="7"></td>
+    <td data-cell-index='8' class="boardspot" id="8"></td>
   </tr>
 
 </table>
 <!--Creating reset button-->
 <button type="button" class="btn btn-outline-primary reset-game">Reset Board</button>
 
+</div>
+
 <!-- TODO: make functioning -->
 
-</div>
 
 </body>
 </html>

@@ -53,22 +53,26 @@ const onCreateGame = function () {
   event.preventDefault()
 
   api.createGames()
-    .then(ui.createGameSucess)
+    .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }
 
 const onUpdateGames = function () {
   event.preventDefault()
+  console.log(event.target)
+  const attribute = $(this).attr('id')
   const data = {
     game: {
       cell: {
-        'index': gameEngine.createBoard[gamePlayer],
+        'index': attribute,
         'value': gameEngine.players.currentPlayer
       }
     },
-    'over': false
+    'over': gameEngine.checkIfWinner(gameEngine.createBoard)
   }
+
   api.updateGames(data)
+
   console.log(onUpdateGames)
 }
 

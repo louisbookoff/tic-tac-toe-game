@@ -2,6 +2,7 @@
 
 const config = require('../config')
 const store = require('../store')
+// const gamePlayer = require('./events')
 
 const signUp = function (data) {
   return $.ajax({
@@ -61,9 +62,8 @@ const createGames = function () {
 }
 
 const updateGames = function (data) {
-  console.log(data)
   return $.ajax({
-    url: config.apiOrigin + '/games/' + store.user.id,
+    url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
