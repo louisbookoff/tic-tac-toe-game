@@ -57,30 +57,38 @@ const onCreateGame = function () {
     .catch(ui.createGameFailure)
 }
 
-const onUpdateGames = function () {
+const onUpdateGames = function (event) {
   event.preventDefault()
-  console.log(event.target)
+
+  $(event.target).text(gameEngine.players.currentPlayer)
+
   const attribute = $(this).attr('id')
+  $(this).off()
+  gameEngine.createBoard[attribute] = gameEngine.players.currentPlayer
+
+  // iterating player turn
+  gameEngine.playerTurn()
+
+  // checking winner
+  const won = gameEngine.checkIfWinner(gameEngine.createBoard)
+
   const data = {
     game: {
       cell: {
         'index': attribute,
         'value': gameEngine.players.currentPlayer
-      }
-    },
-    'over': gameEngine.checkIfWinner(gameEngine.createBoard)
+      },
+      over: won
+    }
   }
 
   api.updateGames(data)
-
-  console.log(onUpdateGames)
 }
 
 const onGetGames = function () {
   event.preventDefault()
   api.getAllGames()
-  console.log(onGetGames())
-  // .then(ui.GetGamesSuccess)
+    .then(ui.getGamesSuccess)
 }
 
 const addHandlers = () => {
@@ -94,6 +102,5 @@ const addHandlers = () => {
 }
 
 module.exports = {
-  addHandlers,
-  onGetGames
+  addHandlers
 }

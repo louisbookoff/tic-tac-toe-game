@@ -32,7 +32,10 @@ const playerTurn = function () {
 //   createBoard[i] = currentPlayer
 // }
 
+let returnCondition = true
+
 const checkIfWinner = function (createBoard) {
+  debugger
   // Horizontal top row
 // 0,1,2
   if ((createBoard[0] === createBoard[1] && createBoard[1] === createBoard[2] && createBoard[2] !== '') ||
@@ -65,6 +68,10 @@ const checkIfWinner = function (createBoard) {
 // 6,4,2
 (createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6] !== '')) {
     console.log('There is a winner!')
+    console.log('CreateBoard is ', createBoard)
+    debugger
+    returnCondition = true
+    console.log(returnCondition)
     // createBoard = new Array(9).fill('')
     // console.log(createBoard)
     /// $('td').empty()
@@ -81,9 +88,13 @@ const checkIfWinner = function (createBoard) {
                 createBoard[7] === '' ||
             createBoard[8] === '') {
     console.log('Please proceed to next move')
+    returnCondition = false
   } else {
-    return 'tie game'
+    returnCondition = false
+    console.log(returnCondition)
   }
+  console.log(returnCondition)
+  return returnCondition
 }
 
 // const winner = function () {

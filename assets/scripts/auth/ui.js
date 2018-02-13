@@ -7,6 +7,12 @@ const signUpSuccess = function (data) {
   console.log(data)
 }
 
+const signUpReset = function () {
+  $('.modal-fade').on('hidden.bs.modal', function () {
+    $(this).find('form')[0].reset()
+  })
+}
+
 // const signInUi = function () {
 //   if (signUpSuccess) {
 //     $('#in-button').click(function () {
@@ -76,10 +82,11 @@ const createGameFailure = function () {
   console.error('create game failure')
 }
 
-// const getGamesSuccess = function () {
-//   $('.card-text').text('Games played')
-//   $('.card-text').css('color', '$sunsetorange')
-// }
+const getGamesSuccess = function (data) {
+  $('.card-text').text('Games played ' + data.games.length)
+  $('.card-text').css('color', '$sunsetorange')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -90,5 +97,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  signUpReset,
+  getGamesSuccess
 }

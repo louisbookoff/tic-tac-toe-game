@@ -75,7 +75,7 @@ const updateGames = function (data) {
 
 const getAllGames = function () {
   return $.ajax({
-    url: config.apiOrigin + '/games?over=true',
+    url: config.apiOrigin + '/games',
     method: 'GET',
     headers: {
       contentType: 'application/json',
