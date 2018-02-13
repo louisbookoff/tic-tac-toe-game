@@ -7,6 +7,18 @@ const signUpSuccess = function (data) {
   console.log(data)
 }
 
+// const signInUi = function () {
+//   if (signUpSuccess) {
+//     $('#in-button').click(function () {
+//       $('.gamePage').toggle('slow')
+//       $('#first-page').toggle('slow')
+//       $('#message').off('text')
+//     })
+//   } else {
+//     console.log('try again idiot')
+//   }
+// }
+
 const signUpFailure = function (error) {
   $('#message').text('Error on sign up')
   $('#message').css('background-color', 'red')
@@ -72,5 +84,6 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  signInUi
 }
