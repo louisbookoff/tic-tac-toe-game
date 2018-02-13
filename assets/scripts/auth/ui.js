@@ -76,6 +76,10 @@ const createGameFailure = function () {
   console.error('create game failure')
 }
 
+// const getGamesSuccess = function () {
+//   $('.card-text').text('Games played')
+//   $('.card-text').css('color', '$sunsetorange')
+// }
 module.exports = {
   signUpSuccess,
   signUpFailure,

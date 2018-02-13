@@ -76,6 +76,13 @@ const onUpdateGames = function () {
   console.log(onUpdateGames)
 }
 
+const onGetGames = function () {
+  event.preventDefault()
+  api.getAllGames()
+  console.log(onGetGames())
+  // .then(ui.GetGamesSuccess)
+}
+
 const addHandlers = () => {
   $('.signup-form').on('submit', onSignUp)
   $('.signin-form').on('submit', onSignIn)
@@ -83,8 +90,10 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut)
   $('.create-game').on('click', onCreateGame)
   $('.boardspot').on('click', onUpdateGames)
+  $('.game-stats').on('click', onGetGames)
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onGetGames
 }
