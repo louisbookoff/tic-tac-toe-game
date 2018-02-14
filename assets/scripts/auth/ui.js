@@ -4,6 +4,7 @@ const store = require('../store')
 const signUpSuccess = function (data) {
   $('#message').text('Signed up succesfully')
   $('#message').css('background-color', 'green')
+  $('.close').click()
   console.log(data)
 }
 
@@ -19,7 +20,8 @@ const signInSuccess = function (data) {
   $('#game-page').removeClass('hidden')
   console.log(data)
   store.user = data.user
-  // $('#pageone').toggleClass('hidden')
+  $('#pageone').toggleClass('hidden')
+  $('.close').click()
 }
 const signInFailure = function (error) {
   $('#message').text('Error on sign in, try again!')
@@ -41,6 +43,8 @@ const changePasswordFailure = function (error) {
 const signOutSuccess = function () {
   $('#message').text('You have signed out succesfully')
   $('#message').css('background-color', 'green')
+  $('#game-page').toggleClass('hidden')
+  $('#pageone').removeClass('hidden')
   console.log('Signed out successfully')
 }
 
@@ -54,7 +58,7 @@ const createGameSuccess = function (data) {
   console.log('new game data is', data)
   $('#message').text('success on create game')
   $('#message').css('background-color', 'green')
-  console.log('create game successful')
+  $('td').empty()
   store.game = data.game
 }
 
@@ -69,6 +73,11 @@ const getGamesSuccess = function (data) {
   $('.card-text').css('color', '$sunsetorange')
 }
 
+const getGamesFailure = function (data) {
+  $('.card-text').text('Check your internet connection could not get games')
+  $('.card-text').css('color', 'red')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -80,5 +89,6 @@ module.exports = {
   signOutFailure,
   createGameSuccess,
   createGameFailure,
-  getGamesSuccess
+  getGamesSuccess,
+  getGamesFailure
 }

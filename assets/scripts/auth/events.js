@@ -64,14 +64,14 @@ const onUpdateGames = function (event) {
 
   const attribute = $(this).attr('id')
   $(this).off()
+  console.log(gameEngine.players.currentPlayer)
   gameEngine.createBoard[attribute] = gameEngine.players.currentPlayer
-
   // iterating player turn
   gameEngine.playerTurn()
 
   // checking winner
   const won = gameEngine.checkIfWinner(gameEngine.createBoard)
-
+  gameEngine.inGameMessages(gameEngine.createBoard)
   const data = {
     game: {
       cell: {
@@ -81,7 +81,6 @@ const onUpdateGames = function (event) {
       over: won
     }
   }
-
   api.updateGames(data)
 }
 
@@ -89,6 +88,7 @@ const onGetGames = function () {
   event.preventDefault()
   api.getAllGames()
     .then(ui.getGamesSuccess)
+    .catch(ui.getGamesFailure)
 }
 
 const addHandlers = () => {

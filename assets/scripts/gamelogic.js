@@ -3,6 +3,58 @@
 // JS board will consist of a coordinate for each one of the 9 spaces on the board
 // there are eight different ways to win the tic tac toe game
 
+const inGameMessages = function (createBoard) {
+  if ((createBoard[0] === createBoard[1] && createBoard[1] === createBoard[2] && createBoard[2] !== '') ||
+
+// Vertical left column
+// 0,3,6
+(createBoard[0] === createBoard[3] && createBoard[3] === createBoard[6] && createBoard[3] !== '') ||
+
+// Diagonal top left to bottom right
+// 0,4,8
+(createBoard[0] === createBoard[4] && createBoard[4] === createBoard[8] && createBoard[8] !== '') ||
+
+// Vertical middle column
+// 1,4,7
+(createBoard[1] === createBoard[4] && createBoard[4] === createBoard[7] && createBoard[7] !== '') ||
+
+// Vertical right column
+// 2,5,8
+(createBoard[2] === createBoard[5] && createBoard[5] === createBoard[8] && createBoard[5] !== '') ||
+
+// Horizontal middle row
+// 3,4,5
+(createBoard[3] === createBoard[4] && createBoard[4] === createBoard[5] && createBoard[4] !== '') ||
+
+// Horizontal bottom row
+// 6,7,8
+(createBoard[6] === createBoard[7] && createBoard[7] === createBoard[8] && createBoard[7] !== '') ||
+
+// Diagonal bottom left to top right
+// 6,4,2
+(createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6] !== '')) {
+    playerTurn()
+    const messageText = 'the winner is ' + players.currentPlayer
+    $('#message').text(messageText)
+    $('#message').css('background-color', '$uclablue')
+  } else if
+  (createBoard[0] === '' ||
+                createBoard[1] === '' ||
+                createBoard[2] === '' ||
+                createBoard[3] === '' ||
+                createBoard[4] === '' ||
+                createBoard[5] === '' ||
+                createBoard[6] === '' ||
+                createBoard[7] === '' ||
+            createBoard[8] === '') {
+    $('#message').text('Next Turn!')
+    $('#message').css('color', '$sunsetorange')
+  } else {
+    $('#message').text('TIE!')
+    $('#message').css('background-color', '$sunsetorange')
+  }
+}
+
 // Step 1: Create Two Players
 const players = {
   currentPlayer: null
@@ -35,7 +87,6 @@ const playerTurn = function () {
 let returnCondition = true
 
 const checkIfWinner = function (createBoard) {
-  debugger
   // Horizontal top row
 // 0,1,2
   if ((createBoard[0] === createBoard[1] && createBoard[1] === createBoard[2] && createBoard[2] !== '') ||
@@ -67,11 +118,7 @@ const checkIfWinner = function (createBoard) {
 // Diagonal bottom left to top right
 // 6,4,2
 (createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6] !== '')) {
-    console.log('There is a winner!')
-    console.log('CreateBoard is ', createBoard)
-    debugger
     returnCondition = true
-    console.log(returnCondition)
     // createBoard = new Array(9).fill('')
     // console.log(createBoard)
     /// $('td').empty()
@@ -87,20 +134,12 @@ const checkIfWinner = function (createBoard) {
                 createBoard[6] === '' ||
                 createBoard[7] === '' ||
             createBoard[8] === '') {
-    console.log('Please proceed to next move')
     returnCondition = false
   } else {
     returnCondition = false
-    console.log(returnCondition)
   }
-  console.log(returnCondition)
   return returnCondition
 }
-
-// const winner = function () {
-//   $('#message').text('You Won!!')
-//   $('#message').css('background-color', 'green')
-// }
 
 // potentially player can be an array of players
 // since x and o always switch, we know if the length of the board is 0 then it's x's turn (because x goes first)
@@ -114,5 +153,6 @@ module.exports = {
   playerTurn,
   playerOne,
   playerTwo,
-  players
+  players,
+  inGameMessages
 }
