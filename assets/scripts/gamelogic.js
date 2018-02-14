@@ -119,7 +119,7 @@ const checkIfWinner = function (createBoard) {
 // 6,4,2
 (createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6] !== '')) {
     returnCondition = true
-    // $('.boardspot').off('click')
+    $('.boardspot').off('click')
     // createBoard = new Array(9).fill('')
     // console.log(createBoard)
     /// $('td').empty()
