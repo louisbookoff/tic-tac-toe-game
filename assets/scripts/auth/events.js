@@ -51,7 +51,6 @@ const onSignOut = function (event) {
 
 const onCreateGame = function () {
   event.preventDefault()
-
   api.createGames()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
@@ -59,13 +58,14 @@ const onCreateGame = function () {
 
 const onUpdateGames = function (event) {
   event.preventDefault()
-
   $(event.target).text(gameEngine.players.currentPlayer)
 
+  $(this).off('click')
+
   const attribute = $(this).attr('id')
-  $(this).off()
   console.log(gameEngine.players.currentPlayer)
   gameEngine.createBoard[attribute] = gameEngine.players.currentPlayer
+
   // iterating player turn
   gameEngine.playerTurn()
 
@@ -83,6 +83,14 @@ const onUpdateGames = function (event) {
   }
   api.updateGames(data)
 }
+
+// try to prevent duplicate clicks
+// $(document).ready(function () {
+//   $('.boardspot').dblclick(function () {
+//     $(this).attr('disabled', true)
+//     return false
+//   })
+// })
 
 const onGetGames = function () {
   event.preventDefault()
