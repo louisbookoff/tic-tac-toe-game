@@ -1,11 +1,11 @@
 'use strict'
 const store = require('../store')
-
+const events = require('./events')
 const signUpSuccess = function (data) {
   $('#message').text('Signed up succesfully')
   $('#message').css('background-color', 'green')
   $('.close').click()
-  console.log(data)
+  // console.log(data)
 }
 
 const signUpFailure = function (error) {
@@ -31,7 +31,7 @@ const signInFailure = function (error) {
 const changePasswordSuccess = function () {
   $('#message').text('You have changed your password succesfully')
   $('#message').css('background-color', 'green')
-  console.log('change password successfully')
+  // console.log('change password successfully')
 }
 
 const changePasswordFailure = function (error) {
@@ -45,7 +45,7 @@ const signOutSuccess = function () {
   $('#message').css('background-color', 'green')
   $('#game-page').toggleClass('hidden')
   $('#pageone').removeClass('hidden')
-  console.log('Signed out successfully')
+  // console.log('Signed out successfully')
 }
 
 const signOutFailure = function (error) {
@@ -55,9 +55,12 @@ const signOutFailure = function (error) {
 }
 
 const createGameSuccess = function (data) {
-  console.log('new game data is', data)
+  // console.log('new game data is', data)
   $('#message').text('success on create game')
   $('#message').css('background-color', 'green')
+  // $('td').empty()
+  console.log(events)
+  $('.boardspot').on('click', events.createBoardSpotClickHandlers)
   $('td').empty()
   store.game = data.game
 }
@@ -65,7 +68,7 @@ const createGameSuccess = function (data) {
 const createGameFailure = function () {
   $('#message').text('Error on create game')
   $('#message').css('background-color', 'red')
-  console.error('create game failure')
+  // console.error('create game failure')
 }
 
 const getGamesSuccess = function (data) {

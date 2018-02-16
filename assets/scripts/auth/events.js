@@ -10,7 +10,6 @@ const onSignUp = function (event) {
   event.preventDefault()
 
   const data = getFormFields(this)
-  console.log('data is ', data)
 
   api.signUp(data)
     .then(ui.signUpSuccess)
@@ -21,7 +20,6 @@ const onSignIn = function (event) {
   event.preventDefault()
 
   const data = getFormFields(this)
-  console.log('data is ', data)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -31,7 +29,6 @@ const onChangePassword = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
-  console.log('data is ', data)
 
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
@@ -42,7 +39,6 @@ const onSignOut = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
-  console.log('data is ', data)
 
   api.signOut(data)
     .then(ui.signOutSuccess)
@@ -60,9 +56,9 @@ const onUpdateGames = function (event) {
   event.preventDefault()
   $(event.target).text(gameEngine.players.currentPlayer)
 
-  $(this).off('click')
-
   const attribute = $(this).attr('id')
+  console.log('hit')
+  $(this).off()
   console.log(gameEngine.players.currentPlayer)
   gameEngine.createBoard[attribute] = gameEngine.players.currentPlayer
 
@@ -84,6 +80,22 @@ const onUpdateGames = function (event) {
   api.updateGames(data)
 }
 
+// const preventClick = function () {
+//   if ((gameEngine.createBoard[0] === '' || gameEngine.createBoard[0] === 'O') ||
+//   (gameEngine.createBoard[1] === 'X' || gameEngine.createBoard[1] === 'O') ||
+//                 (gameEngine.createBoard[2] === 'X' || gameEngine.createBoard[2] === 'O') ||
+//                 (gameEngine.createBoard[3] === 'X' || gameEngine.createBoard[3] === 'O') ||
+//                 (gameEngine.createBoard[4] === 'X' || gameEngine.createBoard[4] === 'O') ||
+//                 (gameEngine.createBoard[5] === 'X' || gameEngine.createBoard[5] === 'O') ||
+//                 (gameEngine.createBoard[6] === 'X' || gameEngine.createBoard[6] === 'O') ||
+//                 (gameEngine.createBoard[7] === 'X' || gameEngine.createBoard[7] === 'O') ||
+//             (gameEngine.createBoard[8] === 'X' || gameEngine.createBoard[7] === 'O')) {
+//     return true
+//   } else {
+//     return false
+//   }
+// }
+
 // try to prevent duplicate clicks
 // $(document).ready(function () {
 //   $('.boardspot').dblclick(function () {
@@ -99,16 +111,21 @@ const onGetGames = function () {
     .catch(ui.getGamesFailure)
 }
 
+const createBoardSpotClickHandlers = function () {
+  $('.boardspot').on('click', onUpdateGames)
+}
+
 const addHandlers = () => {
   $('.signup-form').on('submit', onSignUp)
   $('.signin-form').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('.create-game').on('click', onCreateGame)
-  $('.boardspot').on('click', onUpdateGames)
+  createBoardSpotClickHandlers()
   $('.game-stats').on('click', onGetGames)
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  createBoardSpotClickHandlers
 }
