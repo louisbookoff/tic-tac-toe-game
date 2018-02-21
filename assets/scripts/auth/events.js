@@ -4,7 +4,6 @@ const api = require('./api')
 const getFormFields = require('.../../../lib/get-form-fields')
 const ui = require('./ui')
 const gameEngine = require('../gamelogic')
-const gamePlayer = require('./events')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -50,59 +49,58 @@ const onCreateGame = function () {
   api.createGames()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
+  gameEngine.createBoard = new Array(9).fill('')
 }
 
 const onUpdateGames = function (event) {
   event.preventDefault()
-  $(event.target).text(gameEngine.players.currentPlayer)
+  // get board position
+  const attribute = $(event.target).attr('id')
+  // if spot is taken
+  console.log(gameEngine.createBoard)
+  console.log('this is the ', attribute)
+  if (gameEngine.createBoard[attribute] !== '') {
+    console.log('Shouldnt do anything')
+    // message that spot is taken
+    $('#message').text('This spot is taken, try again!')
+    $('#message').css('background-color', 'red')
+    // debugger
+    console.log('The board looks like ', gameEngine.createBoard)
+    console.log('Value is ', gameEngine.createBoard[attribute])
+  } else {
+    // add player token to board array
+    console.log('Should do something')
+    gameEngine.createBoard[attribute] = gameEngine.players.currentPlayer
+    console.log(gameEngine.createBoard)
+    console.log('Value is ', gameEngine.createBoard[attribute])
+    console.log('Attribute is ', attribute)
+    // add player token to board UI
+    $(event.target).text(gameEngine.players.currentPlayer)
 
-  const attribute = $(this).attr('id')
-  console.log('hit')
-  $(this).off()
-  console.log(gameEngine.players.currentPlayer)
-  gameEngine.createBoard[attribute] = gameEngine.players.currentPlayer
+    // iterating player turn
+    gameEngine.playerTurn()
 
-  // iterating player turn
-  gameEngine.playerTurn()
+    // checking winner
+    const won = gameEngine.checkIfWinner(gameEngine.createBoard)
 
-  // checking winner
-  const won = gameEngine.checkIfWinner(gameEngine.createBoard)
-  gameEngine.inGameMessages(gameEngine.createBoard)
-  const data = {
-    game: {
-      cell: {
-        'index': attribute,
-        'value': gameEngine.players.currentPlayer
-      },
-      over: won
+    // what does this do?
+    gameEngine.inGameMessages(gameEngine.createBoard)
+
+    // structure data for api
+    const data = {
+      game: {
+        cell: {
+          'index': attribute,
+          'value': gameEngine.players.currentPlayer
+        },
+        over: won
+      }
     }
+
+    // send data to api method
+    api.updateGames(data)
   }
-  api.updateGames(data)
 }
-
-// const preventClick = function () {
-//   if ((gameEngine.createBoard[0] === '' || gameEngine.createBoard[0] === 'O') ||
-//   (gameEngine.createBoard[1] === 'X' || gameEngine.createBoard[1] === 'O') ||
-//                 (gameEngine.createBoard[2] === 'X' || gameEngine.createBoard[2] === 'O') ||
-//                 (gameEngine.createBoard[3] === 'X' || gameEngine.createBoard[3] === 'O') ||
-//                 (gameEngine.createBoard[4] === 'X' || gameEngine.createBoard[4] === 'O') ||
-//                 (gameEngine.createBoard[5] === 'X' || gameEngine.createBoard[5] === 'O') ||
-//                 (gameEngine.createBoard[6] === 'X' || gameEngine.createBoard[6] === 'O') ||
-//                 (gameEngine.createBoard[7] === 'X' || gameEngine.createBoard[7] === 'O') ||
-//             (gameEngine.createBoard[8] === 'X' || gameEngine.createBoard[7] === 'O')) {
-//     return true
-//   } else {
-//     return false
-//   }
-// }
-
-// try to prevent duplicate clicks
-// $(document).ready(function () {
-//   $('.boardspot').dblclick(function () {
-//     $(this).attr('disabled', true)
-//     return false
-//   })
-// })
 
 const onGetGames = function () {
   event.preventDefault()
@@ -111,21 +109,16 @@ const onGetGames = function () {
     .catch(ui.getGamesFailure)
 }
 
-const createBoardSpotClickHandlers = function () {
-  $('.boardspot').on('click', onUpdateGames)
-}
-
 const addHandlers = () => {
   $('.signup-form').on('submit', onSignUp)
   $('.signin-form').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('.create-game').on('click', onCreateGame)
-  createBoardSpotClickHandlers()
+  $('.boardspot').on('click', onUpdateGames)
   $('.game-stats').on('click', onGetGames)
 }
 
 module.exports = {
-  addHandlers,
-  createBoardSpotClickHandlers
+  addHandlers
 }

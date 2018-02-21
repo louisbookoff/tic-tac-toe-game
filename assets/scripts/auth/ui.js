@@ -1,6 +1,7 @@
 'use strict'
 const store = require('../store')
 const events = require('./events')
+
 const signUpSuccess = function (data) {
   $('#message').text('Signed up succesfully')
   $('#message').css('background-color', 'green')
@@ -60,7 +61,9 @@ const createGameSuccess = function (data) {
   $('#message').css('background-color', 'green')
   // $('td').empty()
   console.log(events)
-  $('.boardspot').on('click', events.createBoardSpotClickHandlers)
+  // debugger
+  // $('.boardspot').on('click',)
+  $('.game-board').removeClass('hidden')
   $('td').empty()
   store.game = data.game
 }
