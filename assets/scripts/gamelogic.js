@@ -36,7 +36,7 @@ const inGameMessages = function (createBoard) {
     playerTurn()
     const messageText = 'the winner is ' + players.currentPlayer
     $('#message').text(messageText)
-    $('#message').css('background-color', '$uclablue')
+    $('#message').css('background-color', 'blue')
   } else if
   (createBoard[0] === '' ||
                 createBoard[1] === '' ||
@@ -48,10 +48,10 @@ const inGameMessages = function (createBoard) {
                 createBoard[7] === '' ||
             createBoard[8] === '') {
     $('#message').text('Next Turn!')
-    $('#message').css('color', '$sunsetorange')
+    $('#message').css('background-color', 'red')
   } else {
     $('#message').text('TIE!')
-    $('#message').css('background-color', '$sunsetorange')
+    $('#message').css('background-color', 'red')
   }
 }
 

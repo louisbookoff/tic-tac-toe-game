@@ -45,6 +45,7 @@ const signOutSuccess = function () {
   $('#message').text('You have signed out succesfully')
   $('#message').css('background-color', 'green')
   $('#game-page').toggleClass('hidden')
+  $('.game-board').toggleClass('hidden')
   $('#pageone').removeClass('hidden')
   // console.log('Signed out successfully')
 }
@@ -63,7 +64,7 @@ const createGameSuccess = function (data) {
   console.log(events)
   // debugger
   // $('.boardspot').on('click',)
-  $('.game-board').removeClass('hidden')
+  $('.game-board').toggleClass('hidden')
   $('td').empty()
   store.game = data.game
 }
