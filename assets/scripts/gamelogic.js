@@ -75,7 +75,7 @@ const playerTurn = function () {
   } else {
     players.currentPlayer = playerOne
   }
-  console.log('current player is', players.currentPlayer)
+  // console.log('current player is', players.currentPlayer)
 }
 
 // const addTurnToBoard = function (i, currentPlayer) {

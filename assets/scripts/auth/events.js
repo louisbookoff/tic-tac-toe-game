@@ -58,19 +58,18 @@ const onUpdateGames = function (event) {
   // get board position
   const attribute = $(event.target).attr('id')
   // if spot is taken
-  console.log(gameEngine.createBoard)
-  console.log('this is the ', attribute)
+  // console.log(gameEngine.createBoard)
+  // console.log('this is the ', attribute)
   if (gameEngine.createBoard[attribute] !== '') {
-    console.log('Shouldnt do anything')
+    // console.log('Shouldnt do anything')
     // message that spot is taken
     $('#message').text('This spot is taken, try again!')
     $('#message').css('background-color', 'red')
-    // debugger
   } else {
     // add player token to board array
-    console.log('Should do something')
+    // console.log('Should do something')
     gameEngine.createBoard[attribute] = gameEngine.players.currentPlayer
-    console.log('Value is ', gameEngine.createBoard)
+    // console.log('Value is ', gameEngine.createBoard)
     // add player token to board UI
     $(event.target).text(gameEngine.players.currentPlayer)
 

@@ -19,7 +19,7 @@ const signInSuccess = function (data) {
   $('#message').text('Signed in succesfully')
   $('#message').css('background-color', 'green')
   $('#game-page').removeClass('hidden')
-  console.log(data)
+  // console.log(data)
   store.user = data.user
   $('#pageone').toggleClass('hidden')
   $('.close').click()
@@ -65,9 +65,9 @@ const signOutFailure = function (error) {
 
 const createGameSuccess = function (data) {
   // console.log('new game data is', data)
-  $('#message').text('success on create game')
+  $('#message').text('You have sucessfully created a new game!')
   $('#message').css('background-color', 'green')
-  console.log(events)
+  // console.log(events)
   $('.game-board').removeClass('hidden')
   $('td').empty()
   store.game = data.game
