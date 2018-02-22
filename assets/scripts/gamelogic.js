@@ -47,7 +47,7 @@ const inGameMessages = function (createBoard) {
                 createBoard[6] === '' ||
                 createBoard[7] === '' ||
             createBoard[8] === '') {
-    $('#message').text('Next Turn!')
+    $('#message').text('Your turn player ' + players.currentPlayer)
     $('#message').css('background-color', 'red')
   } else {
     $('#message').text('TIE!')
