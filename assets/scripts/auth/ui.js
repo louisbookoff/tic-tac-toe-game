@@ -19,6 +19,7 @@ const signUpFailure = function () {
   $('#exampleInputEmail1').val('')
   $('#exampleInputPassword1').val('')
   $('#exampleInputPasswordConfirmation').val('')
+  $('.close').click()
   // console.error(error)
 }
 
@@ -38,6 +39,7 @@ const signInFailure = function (error) {
   $('#message').css('background-color', 'red')
   $('#InputEmail1').val('')
   $('#InputPassword1').val('')
+  $('.close').click()
   console.error(error)
 }
 const changePasswordSuccess = function () {
