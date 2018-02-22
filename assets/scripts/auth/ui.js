@@ -1,18 +1,22 @@
 'use strict'
 const store = require('../store')
-const events = require('./events')
+// const events = require('./events')
 
 const signUpSuccess = function (data) {
+  // if ($(.form-group).val() === $(.confirmation).val())
   $('#message').text('Signed up succesfully')
   $('#message').css('background-color', 'green')
   $('.close').click()
+  $('#exampleInputEmail1').val('')
+  $('#exampleInputPassword1').val('')
+  $('#exampleInputPasswordConfirmation').val('')
   // console.log(data)
 }
 
-const signUpFailure = function (error) {
+const signUpFailure = function () {
   $('#message').text('Error on sign up')
   $('#message').css('background-color', 'red')
-  console.error(error)
+  // console.error(error)
 }
 
 const signInSuccess = function (data) {
@@ -23,9 +27,6 @@ const signInSuccess = function (data) {
   store.user = data.user
   $('#pageone').toggleClass('hidden')
   $('.close').click()
-  $('#exampleInputEmail1').val('')
-  $('#exampleInputPassword1').val('')
-  $('#exampleInputPasswordConfirmation').val('')
   $('#InputEmail1').val('')
   $('#InputPassword1').val('')
 }
@@ -54,6 +55,7 @@ const signOutSuccess = function () {
   $('#game-page').toggleClass('hidden')
   $('table').addClass('hidden')
   $('#pageone').removeClass('hidden')
+  $('.card-text').text('Click get stats so you can see how much of a BOSS you are!')
   // console.log('Signed out successfully')
 }
 
