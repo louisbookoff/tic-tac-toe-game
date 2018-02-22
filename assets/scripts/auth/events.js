@@ -50,6 +50,7 @@ const onCreateGame = function () {
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
   gameEngine.createBoard = new Array(9).fill('')
+  gameEngine.players.currentPlayer = gameEngine.playerOne
 }
 
 const onUpdateGames = function (event) {
@@ -65,15 +66,11 @@ const onUpdateGames = function (event) {
     $('#message').text('This spot is taken, try again!')
     $('#message').css('background-color', 'red')
     // debugger
-    console.log('The board looks like ', gameEngine.createBoard)
-    console.log('Value is ', gameEngine.createBoard[attribute])
   } else {
     // add player token to board array
     console.log('Should do something')
     gameEngine.createBoard[attribute] = gameEngine.players.currentPlayer
-    console.log(gameEngine.createBoard)
-    console.log('Value is ', gameEngine.createBoard[attribute])
-    console.log('Attribute is ', attribute)
+    console.log('Value is ', gameEngine.createBoard)
     // add player token to board UI
     $(event.target).text(gameEngine.players.currentPlayer)
 
@@ -83,7 +80,7 @@ const onUpdateGames = function (event) {
     // checking winner
     const won = gameEngine.checkIfWinner(gameEngine.createBoard)
 
-    // what does this do?
+    // // what does this do?
     gameEngine.inGameMessages(gameEngine.createBoard)
 
     // structure data for api

@@ -36,7 +36,7 @@ const inGameMessages = function (createBoard) {
     playerTurn()
     const messageText = 'the winner is ' + players.currentPlayer
     $('#message').text(messageText)
-    $('#message').css('background-color', 'blue')
+    $('#message').css('background-color', 'white')
   } else if
   (createBoard[0] === '' ||
                 createBoard[1] === '' ||
@@ -120,6 +120,7 @@ const checkIfWinner = function (createBoard) {
 // 6,4,2
 (createBoard[6] === createBoard[4] && createBoard[4] === createBoard[2] && createBoard[6] !== '')) {
     returnCondition = true
+    $('.game-board').toggleClass('hidden')
     // $('.boardspot').off('click')
     // createBoard = new Array(9).fill('')
     // console.log(createBoard)

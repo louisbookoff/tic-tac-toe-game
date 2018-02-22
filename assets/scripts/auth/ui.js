@@ -23,6 +23,11 @@ const signInSuccess = function (data) {
   store.user = data.user
   $('#pageone').toggleClass('hidden')
   $('.close').click()
+  $('#exampleInputEmail1').val('')
+  $('#exampleInputPassword1').val('')
+  $('#exampleInputPasswordConfirmation').val('')
+  $('#InputEmail1').val('')
+  $('#InputPassword1').val('')
 }
 const signInFailure = function (error) {
   $('#message').text('Error on sign in, try again!')
@@ -32,11 +37,13 @@ const signInFailure = function (error) {
 const changePasswordSuccess = function () {
   $('#message').text('You have changed your password succesfully')
   $('#message').css('background-color', 'green')
+  $('#old-password').val('')
+  $('#new-password').val('')
   // console.log('change password successfully')
 }
 
 const changePasswordFailure = function (error) {
-  $('#message').text('Error on sign up')
+  $('#message').text('Error changing password')
   $('#message').css('background-color', 'red')
   console.error(error)
 }
@@ -45,7 +52,7 @@ const signOutSuccess = function () {
   $('#message').text('You have signed out succesfully')
   $('#message').css('background-color', 'green')
   $('#game-page').toggleClass('hidden')
-  $('.game-board').toggleClass('hidden')
+  $('table').addClass('hidden')
   $('#pageone').removeClass('hidden')
   // console.log('Signed out successfully')
 }
@@ -60,11 +67,8 @@ const createGameSuccess = function (data) {
   // console.log('new game data is', data)
   $('#message').text('success on create game')
   $('#message').css('background-color', 'green')
-  // $('td').empty()
   console.log(events)
-  // debugger
-  // $('.boardspot').on('click',)
-  $('.game-board').toggleClass('hidden')
+  $('.game-board').removeClass('hidden')
   $('td').empty()
   store.game = data.game
 }
