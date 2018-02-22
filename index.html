@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic-Tac-Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <h1>Tic-Tac-Toe</h1>
+
+<!--Page One  -->
+<h2 class="instructions">Instructions</h2>
+  <ul class=instruction-steps>
+    <li>Step 1: Create an account.  If you have already created an account proceed to step 2.</li>
+    <li>Step 2: Please sign in with your username and password.</li>
+    <li>Step 3: Once you sign in, press new game to to start playing</li>
+    <li>Step 4: Scroll down and the game has appeared</li>
+    <li>Step 5: Have fun, this game was made with lots of love!</li>
+  </ul>
+
+<h2 class="about-game">About</h2>
+  <p>This game was created as an assignment for WDI-23 at General Assembly.  A lot of blood sweat and tears went into making this.  So please be gentle and most importantly have fun playing Tic-Tac-Toe.</p>
+
+<br>
+<br>
+<br>
+<!-- id created for my signup responses -->
+  <p id="message"></p>
+
+<div id="pageone">
+  <!--Sign Up Button -->
+  <button type="button" id="pageoneButton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal">
+  Sign Up!
+  <!-- data target must be the same as id below -->
+</button>
+
+  <!-- Sign up Form Creation-->
+  <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button id="sign-up-button" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+          <form class='signup-form'>
+            <div>
+              <label for="exampleInputEmail1">Email address</label>
+              <input name="credentials[email]" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input name="credentials[password]" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group confirmation">
+              <label for="exampleInputPasswordConfirmation">Password Confirmation</label>
+              <input name="credentials[passwordConfirmation]" type="password" class="form-control" id="exampleInputPasswordConfirmation" placeholder="Password Confirmation">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger modal SignIn -->
+<button type="button" id="pageoneButton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-in-modal">
+Sign In!
+<!-- data target must be the same as id below -->
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+</div>
+<div class="modal-body">
+  <form class='signin-form'>
+    <div>
+      <label for="InputEmail">Email address</label>
+      <input name="credentials[email]" type="email" class="form-control" id="InputEmail1" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="InputPassword">Password</label>
+      <input name="credentials[password]" type="password" class="form-control" id="InputPassword1" placeholder="Password">
+    </div>
+<button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--game board page  -->
+<div id="game-page" class="hidden">
+<form id="change-password" class="border">
+      <fieldset>
+        <legend>Change Password!</legend>
+        <input type="password" name="passwords[old]" placeholder="Old Password" id="old-password">
+        <input type="password" name="passwords[new]]" placeholder="New Password" id="new-password">
+        <input type="submit" value="Change Password!">
+      </fieldset>
+    </form>
+
+<form id="sign-out" class="border">
+      <fieldset>
+        <legend>Sign out!</legend>
+        <input type="submit" value="Sign out!">
+      </fieldset>
+</form>
+
+<br>
+<br>
+<div id="game-play">
+<div class="game-stats" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Game Stats</h5>
+    <p class="card-text">Click get stats so you can see how much of a BOSS you are!</p>
+    <a href="#" class="btn btn-primary">Get Stats</a>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+
+<!--Creating New Game-->
+<button type="button" class="btn btn-outline-primary create-game">New Game</button>
+</div>
+<br>
+<br>
+<br>
+</div>
+
+<div>
+<p id='winner-message'></p>
+<!--Creating Game Board  -->
+<table class="game-board hidden">
+  <tr>
+    <td data-cell-index='0' class="boardspot" id="0"></td>
+    <td data-cell-index='1' class="boardspot" id="1"></td>
+    <td data-cell-index='2' class="boardspot" id="2"></td>
+  </tr>
+  <tr>
+    <td data-cell-index='3' class="boardspot" id="3"></td>
+    <td data-cell-index='4' class="boardspot" id="4"></td>
+    <td data-cell-index='5' class="boardspot" id="5"></td>
+  </tr>
+  <tr>
+    <td data-cell-index='6' class="boardspot" id="6"></td>
+    <td data-cell-index='7' class="boardspot" id="7"></td>
+    <td data-cell-index='8' class="boardspot" id="8"></td>
+  </tr>
+
+</table>
+
+</div>
+
+<!-- TODO: make functioning -->
+
+
+</body>
+</html>
