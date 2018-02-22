@@ -16,6 +16,9 @@ const signUpSuccess = function (data) {
 const signUpFailure = function () {
   $('#message').text('Error on sign up')
   $('#message').css('background-color', 'red')
+  $('#exampleInputEmail1').val('')
+  $('#exampleInputPassword1').val('')
+  $('#exampleInputPasswordConfirmation').val('')
   // console.error(error)
 }
 
@@ -33,6 +36,8 @@ const signInSuccess = function (data) {
 const signInFailure = function (error) {
   $('#message').text('Error on sign in, try again!')
   $('#message').css('background-color', 'red')
+  $('#InputEmail1').val('')
+  $('#InputPassword1').val('')
   console.error(error)
 }
 const changePasswordSuccess = function () {
@@ -46,6 +51,8 @@ const changePasswordSuccess = function () {
 const changePasswordFailure = function (error) {
   $('#message').text('Error changing password')
   $('#message').css('background-color', 'red')
+  $('#old-password').val('')
+  $('#new-password').val('')
   console.error(error)
 }
 
