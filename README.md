@@ -28,8 +28,7 @@ I spent a majority of my development time on this phase.  Like the initial game 
 The first task, of creating a new game was rather simple, however what I hit a huge barrier on was the patch-update game request.  This was a huge time-suck during the development process and took signifciantly longer than I initially expected.  I utilized the class issue queue significantly during this process, as I had difficulty leveraging previous examples we had done.  With each one I got a little more confident in how to execute
 
 ## Other Notes
-Things left to do:
-I struggled to find an appropriate method to prevent duplicate clicks.  I believe this is the only thing preventing me from passing requirements.  I used the .off method, however upon creating a new game I could no long click on the boxes.  I realize I must use .on, but tried that in various ways for countless hours and could not get it to work.
+I solved the duplicate clicks issue that I was having initially.  In improving I ran into some UI bugs that I was able to succesfully fix.  One thing I want to add is to test for password confirmation Authorization.  I think this is a great UI feature to let the user know the application is secure.  
 
 Things to improve:
 - Design
